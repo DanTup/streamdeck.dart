@@ -17,7 +17,7 @@ class CounterAction extends StreamDeckPluginAction {
           message: 'Counter for $context has reached $_count'));
     }
 
-     TODO: Persist with settings
+    // TODO: Persist with settings
   }
 
   void sendCount() async {

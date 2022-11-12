@@ -1,0 +1,6 @@
+.dart_tool/
+.DS_Store
+.packages
+build/
+example/pubspec.lock
+log.txt

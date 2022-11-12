@@ -2,9 +2,14 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:streamdeck/streamdeck.dart';
+import 'package:path/path.dart' as path;
 import 'package:streamdeck_example_plugin/plugin.dart';
 
-const logFilePath = '/Users/danny/Dev/streamdeck/example/log.txt';
+final logFilePath = path.join(
+  path.dirname(Platform.script.toFilePath()),
+  '..',
+  'log.txt',
+);
 
 late File logFile;
 
