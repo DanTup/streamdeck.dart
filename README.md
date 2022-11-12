@@ -17,8 +17,8 @@ Implemented APIs:
 | Receive | willAppear | ✅ | [counter](example/lib/counter.dart), [clock](example/lib/clock.dart) |
 | Receive | willDisappear | ✅ | [clock](example/lib/clock.dart) |
 | Receive | titleParametersDidChange | |
-| Receive | deviceDidConnect | |
-| Receive | deviceDidDisconnect | |
+| Receive | deviceDidConnect | ✅ |
+| Receive | deviceDidDisconnect | ✅ |
 | Receive | applicationDidLaunch | |
 | Receive | applicationDidTerminate | |
 | Receive | systemDidWakeUp | |

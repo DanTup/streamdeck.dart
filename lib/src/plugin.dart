@@ -45,6 +45,8 @@ abstract class StreamDeckPlugin {
 
   void deviceDidConnect(DeviceDidConnectEvent event) {}
 
+  void deviceDidDisconnect(DeviceDidDisconnectEvent event) {}
+
   void keyDown(KeyDownEvent event) {
     _actionContexts[event.context]?.keyDown(event);
   }
@@ -103,6 +105,8 @@ abstract class StreamDeckPlugin {
       switch (data['event']) {
         case DeviceDidConnectEvent.eventId:
           return deviceDidConnect(DeviceDidConnectEvent.fromJson(data));
+        case DeviceDidDisconnectEvent.eventId:
+          return deviceDidDisconnect(DeviceDidDisconnectEvent.fromJson(data));
         case KeyDownEvent.eventId:
           return keyDown(KeyDownEvent.fromJson(data));
         case KeyUpEvent.eventId:
