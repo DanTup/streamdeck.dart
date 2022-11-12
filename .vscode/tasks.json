@@ -17,6 +17,16 @@
 			"runOptions": {
 				"runOn": "folderOpen"
 			}
+		},
+		{
+			"label": "Build and Install",
+			"type": "shell",
+			"command": "tool/build_and_install.sh",
+			"options": {
+				"cwd": "example"
+			},
+			"problemMatcher": [],
+			"group": "build"
 		}
 	]
 }

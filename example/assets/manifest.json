@@ -1,0 +1,62 @@
+{
+  "Actions": [
+    {
+      "Icon": "counterIcon",
+      "Name": "Counter",
+      "States": [
+        {
+          "Image": "counterIcon",
+          "TitleAlignment": "middle",
+          "FontSize": "16"
+        }
+      ],
+      "UUID": "com.dantup.streamdeck.counter"
+    },
+    {
+      "Icon": "clockIcon",
+      "Name": "Clock",
+      "States": [
+        {
+          "Image": "clockIcon",
+          "TitleAlignment": "middle",
+          "FontSize": "12"
+        }
+      ],
+      "UUID": "com.dantup.streamdeck.clock"
+    },
+    {
+      "Icon": "genericIcon",
+      "Name": "Hold",
+      "States": [
+        {
+          "Image": "genericIcon",
+          "TitleAlignment": "middle",
+          "FontSize": "12"
+        }
+      ],
+      "UUID": "com.dantup.streamdeck.hold"
+    }
+  ],
+  "SDKVersion": 2,
+  "Author": "DanTup",
+  "CodePath": "plugin",
+  "Description": "A sample plugin created in Dart.",
+  "Name": "DanTup's sample plugin",
+  "Icon": "icon",
+  "URL": "https://github.com/DanTup/streamdeck.dart",
+  "Version": "1.0.0",
+  "OS": [
+    {
+        "Platform": "mac",
+        "MinimumVersion" : "10.11"
+    },
+    {
+        "Platform": "windows",
+        "MinimumVersion" : "10"
+    }
+  ],
+  "Software":
+    {
+        "MinimumVersion" : "5.0"
+    }
+}
