@@ -1,6 +1,8 @@
-## 0.2.0-dev _(2022-11-12)_
+## 0.2.0-dev _(TBD)_
 
-- Add documentation to main classes and methods.
+## 0.1.2 _(2022-11-12)_
+
+- Add documentation to main classes and methods (no functional changes)
 
 ## 0.1.1 _(2022-11-12)_
 
