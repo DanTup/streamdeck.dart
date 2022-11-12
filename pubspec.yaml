@@ -1,0 +1,10 @@
+name: streamdeck
+description: A library for creating StreamDeck plugins in Dart.
+version: 0.1.0
+repository: https://github.com/DanTup/streamdeck.dart
+
+environment:
+  sdk: '>=2.18.0 <3.0.0'
+
+dev_dependencies:
+  lints: ^2.0.1
