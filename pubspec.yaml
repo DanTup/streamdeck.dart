@@ -6,5 +6,12 @@ repository: https://github.com/DanTup/streamdeck.dart
 environment:
   sdk: '>=2.18.0 <3.0.0'
 
+dependencies:
+  json_annotation: ^4.7.0
+  json_serializable: ^6.5.4
+  meta: ^1.8.0
+
 dev_dependencies:
   lints: ^2.0.1
+  build_runner: ^2.3.2
+
