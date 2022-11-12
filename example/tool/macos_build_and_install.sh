@@ -1,4 +1,4 @@
-PLUGINDIR="/Users/danny/Library/Application Support/com.elgato.StreamDeck/Plugins/com.dantup.streamdeck.examplePlugin.sdPlugin"
+PLUGINDIR="$HOME/Library/Application Support/com.elgato.StreamDeck/Plugins/com.dantup.streamdeck.examplePlugin.sdPlugin"
 
 pushd "${0%/*}/.." > /dev/null
 

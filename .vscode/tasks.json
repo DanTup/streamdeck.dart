@@ -21,7 +21,7 @@
 		{
 			"label": "Build and Install",
 			"type": "shell",
-			"command": "tool/build_and_install.sh",
+			"command": "tool/macos_build_and_install.sh",
 			"options": {
 				"cwd": "example"
 			},
