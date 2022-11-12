@@ -29,6 +29,9 @@ mixin LongPressDetection on StreamDeckPluginAction {
     }
   }
 
+  /// Called after a key is released and was held for less than a second.
   void shortPress();
+
+  /// Called after a key is released and was held for more than a second.
   void longPress();
 }

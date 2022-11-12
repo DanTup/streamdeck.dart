@@ -1,5 +1,9 @@
 import 'package:streamdeck/streamdeck.dart';
 
+/// A simple counter that increases each time the key is pressed.
+///
+/// Each instance contains its own count, so multiple instances of this action
+/// will count independently.
 class CounterAction extends StreamDeckPluginAction {
   static const actionUuid = 'com.dantup.streamdeck.counter';
 

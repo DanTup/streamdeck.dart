@@ -4,7 +4,7 @@
 
 Create actions that extend from `StreamDeckPluginAction` and a plugin class that extends `StreamDeckPlugin` to register them.
 
-See the [example plugin](example/bin/main.dart) for some samples.
+See the [example plugin] for some samples.
 
 Implemented APIs:
 
@@ -12,10 +12,10 @@ Implemented APIs:
 | --------- | ----- | ------------ | -------- |
 | Receive | didReceiveSettings | |
 | Receive | didReceiveGlobalSettings | |
-| Receive | keyDown | ✅ | [counter](example/lib/counter.dart), [hold](example/lib/hold.dart) ([LongPressDetection](lib/src/mixins.dart)) |
-| Receive | keyUp | ✅ | [hold](example/lib/hold.dart) ([LongPressDetection](lib/src/mixins.dart)) |
-| Receive | willAppear | ✅ | [counter](example/lib/counter.dart), [clock](example/lib/clock.dart) |
-| Receive | willDisappear | ✅ | [clock](example/lib/clock.dart) |
+| Receive | keyDown | ✅ | [counter], [hold] ([LongPressDetection]) |
+| Receive | keyUp | ✅ | [hold] ([LongPressDetection]) |
+| Receive | willAppear | ✅ | [counter], [clock] |
+| Receive | willDisappear | ✅ | [clock] |
 | Receive | titleParametersDidChange | |
 | Receive | deviceDidConnect | ✅ |
 | Receive | deviceDidDisconnect | ✅ |
@@ -31,12 +31,18 @@ Implemented APIs:
 | Send | setGlobalSettings | |
 | Send | getGlobalSettings | |
 | Send | openUrl | |
-| Send | logMessage | ✅ | [counter](example/lib/counter.dart)
-| Send | setTitle | ✅ | [counter](example/lib/counter.dart), [clock](example/lib/clock.dart)
+| Send | logMessage | ✅ | [counter]
+| Send | setTitle | ✅ | [counter], [clock]
 | Send | setImage | |
-| Send | showAlert | ✅ | [hold](example/lib/hold.dart)
-| Send | showOk | ✅ | [hold](example/lib/hold.dart)
+| Send | showAlert | ✅ | [hold]
+| Send | showOk | ✅ | [hold]
 | Send | setState | |
 | Send | switchToProfile | |
 | Send | sendToPropertyInspector | |
 | Send | sendToPlugin | |
+
+[example plugin]: https://github.com/DanTup/streamdeck.dart/blob/main/example/
+[counter]: https://github.com/DanTup/streamdeck.dart/blob/main/example/lib/counter.dart
+[clock]: https://github.com/DanTup/streamdeck.dart/blob/main/example/lib/clock.dart
+[hold]: https://github.com/DanTup/streamdeck.dart/blob/main/example/lib/hold.dart
+[LongPressDetection]: https://github.com/DanTup/streamdeck.dart/blob/main/lib/src/mixins.dart

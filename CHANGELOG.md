@@ -1,6 +1,10 @@
+## 0.2.0-dev _(2022-11-12)_
+
+- Add documentation to main classes and methods.
+
 ## 0.1.1 _(2022-11-12)_
 
-- Addresses some issues flagged by `package:pana` (no functional changes)
+- Address some issues flagged by `package:pana` (no functional changes)
 
 ## 0.1.0 _(2022-11-12)_
 

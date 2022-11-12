@@ -2,6 +2,13 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'protocol.g.dart';
 
+/// Event received when a monitored application is launched.
+///
+/// A plugin can request in its `manifest.json` to be notified when some
+/// applications are launched or terminated. The manifest.json should contain an
+/// `ApplicationsToMonitor` object specifying the list of application
+/// identifiers to monitor. On macOS, the application bundle identifier is used
+/// while the exe filename is used on Windows.
 @JsonSerializable()
 class ApplicationDidLaunchEvent extends Event {
   static const eventId = 'applicationDidLaunch';
@@ -20,6 +27,10 @@ class ApplicationDidLaunchEvent extends Event {
   Map<String, Object?> toJson() => _$ApplicationDidLaunchEventToJson(this);
 }
 
+/// Event received when a monitored application is terminated.
+///
+/// See [ApplicationDidLaunchEvent] for more information on monitoring
+/// applications.
 @JsonSerializable()
 class ApplicationDidTerminateEvent extends Event {
   static const eventId = 'applicationDidTerminate';
@@ -112,6 +123,7 @@ class ContextPayload extends CommonReceivedPayload {
   Map<String, Object?> toJson() => _$ContextPayloadToJson(this);
 }
 
+/// Coordinates of the button on the device where this action was triggered.
 @JsonSerializable()
 class Coordinates {
   final int column;
@@ -128,6 +140,10 @@ class Coordinates {
   Map<String, Object?> toJson() => _$CoordinatesToJson(this);
 }
 
+/// Event received when a Stream Deck device is connected.
+///
+/// This event fires for all connected devices during startup/plugin
+/// registration.
 @JsonSerializable()
 class DeviceDidConnectEvent extends Event {
   static const eventId = 'deviceDidConnect';
@@ -148,6 +164,7 @@ class DeviceDidConnectEvent extends Event {
   Map<String, Object?> toJson() => _$DeviceDidConnectEventToJson(this);
 }
 
+/// Event received when a Stream Deck device is disconnected.
 @JsonSerializable()
 class DeviceDidDisconnectEvent extends Event {
   static const eventId = 'deviceDidDisconnect';
@@ -166,6 +183,7 @@ class DeviceDidDisconnectEvent extends Event {
   Map<String, Object?> toJson() => _$DeviceDidDisconnectEventToJson(this);
 }
 
+/// Information about a Stream Deck device.
 @JsonSerializable()
 class DeviceInfo {
   final String name;
@@ -184,6 +202,7 @@ class DeviceInfo {
   Map<String, Object?> toJson() => _$DeviceInfoToJson(this);
 }
 
+/// The size (in columns and rows) of a Stream Deck device.
 @JsonSerializable()
 class DeviceSize {
   final int columns;
@@ -200,6 +219,12 @@ class DeviceSize {
   Map<String, Object?> toJson() => _$DeviceSizeToJson(this);
 }
 
+/// Event received after calling the `getGlobalSettings` API to retrieve the
+/// persistent data stored for the action.
+///
+/// Also received by the plugin after the Property Inspector calls the
+/// `setGlobalSettings` API, and similarly by the Property Inspector when the
+/// plugin calls the `setGlobalSettings` API.
 @JsonSerializable()
 class DidReceiveGlobalSettingsEvent extends Event {
   static const eventId = 'didReceiveSettings';
@@ -233,6 +258,12 @@ class DidReceiveGlobalSettingsPayload extends Payload {
       _$DidReceiveGlobalSettingsPayloadToJson(this);
 }
 
+/// Event received after calling the `getSettings` API to retrieve the
+/// persistent data stored for the action.
+///
+/// Also received by the plugin after the Property Inspector calls the
+/// `setSettings` API, and similarly by the Property Inspector when the plugin
+/// calls the `setSettings` API.
 @JsonSerializable()
 class DidReceiveSettingsEvent extends CommonReceivedEvent {
   static const eventId = 'didReceiveSettings';
@@ -262,6 +293,8 @@ abstract class Event {
   Map<String, Object?> toJson();
 }
 
+/// An event sent to request that global settings are sent (via a
+/// [DidReceiveGlobalSettingsEvent]).
 @JsonSerializable()
 class GetGlobalSettingsEvent extends CommonSentEvent {
   static const eventId = 'getGlobalSettings';
@@ -278,6 +311,8 @@ class GetGlobalSettingsEvent extends CommonSentEvent {
   Map<String, Object?> toJson() => _$GetGlobalSettingsEventToJson(this);
 }
 
+/// An event sent to request that settings are sent (via a
+/// [DidReceiveSettingsEvent]).
 @JsonSerializable()
 class GetSettingsEvent extends CommonSentEvent {
   static const eventId = 'getSettings';
@@ -294,6 +329,7 @@ class GetSettingsEvent extends CommonSentEvent {
   Map<String, Object?> toJson() => _$GetSettingsEventToJson(this);
 }
 
+/// Event received when a key on a Stream Deck is pressed down.
 @JsonSerializable()
 class KeyDownEvent extends CommonReceivedEvent {
   static const eventId = 'keyDown';
@@ -335,6 +371,7 @@ class KeyPayload extends ContextPayload {
   Map<String, Object?> toJson() => _$KeyPayloadToJson(this);
 }
 
+/// Event received when a key on a Stream Deck is pressed released.
 @JsonSerializable()
 class KeyUpEvent extends CommonReceivedEvent {
   static const eventId = 'keyUp';
@@ -356,6 +393,13 @@ class KeyUpEvent extends CommonReceivedEvent {
   Map<String, Object?> toJson() => _$KeyUpEventToJson(this);
 }
 
+/// Event sent to log a message to the plugins log file.
+///
+/// Logs are saved to disk per plugin in the folder `~/Library/Logs/StreamDeck/`
+/// on macOS and `%appdata%\Elgato\StreamDeck\logs\` on Windows.
+///
+/// Note that the log files are rotated each time the Stream Deck application is
+/// relaunched.
 @JsonSerializable()
 class LogMessageEvent extends CommonSentEvent {
   static const eventId = 'logMessage';
@@ -389,6 +433,8 @@ class LogMessagePayload extends Payload {
   Map<String, Object?> toJson() => _$LogMessagePayloadToJson(this);
 }
 
+/// An event sent to tell the Stream Deck application to open a URL in the
+/// default browser.
 @JsonSerializable()
 class OpenUrlEvent extends CommonSentEvent {
   static const eventId = 'openUrl';
@@ -424,6 +470,8 @@ class OpenUrlPayload extends Payload {
 
 abstract class Payload {}
 
+/// Event received when the Property Inspector appears in the Stream Deck user
+/// interface, for example when selecting a new instance.
 @JsonSerializable()
 class PropertyInspectorDidAppearEvent extends CommonReceivedEvent {
   static const eventId = 'propertyInspectorDidAppear';
@@ -443,6 +491,8 @@ class PropertyInspectorDidAppearEvent extends CommonReceivedEvent {
       _$PropertyInspectorDidAppearEventToJson(this);
 }
 
+/// Event received when the Property Inspector is removed from the Stream Deck
+/// user interface, for example when selecting a different instance.
 @JsonSerializable()
 class PropertyInspectorDidDisappearEvent extends CommonReceivedEvent {
   static const eventId = 'propertyInspectorDidDisappear';
@@ -463,6 +513,7 @@ class PropertyInspectorDidDisappearEvent extends CommonReceivedEvent {
       _$PropertyInspectorDidDisappearEventToJson(this);
 }
 
+/// An event sent by the Property Inspector to the plugin.
 @JsonSerializable()
 class SendToPluginEvent extends CommonReceivedEvent {
   static const eventId = 'sendToPlugin';
@@ -484,6 +535,7 @@ class SendToPluginEvent extends CommonReceivedEvent {
   Map<String, Object?> toJson() => _$SendToPluginEventToJson(this);
 }
 
+/// An event sent by the plugin to the Property Inspector.
 @JsonSerializable()
 class SendToPropertyInspectorEvent extends CommonReceivedEvent {
   static const eventId = 'sendToPropertyInspector';
@@ -505,15 +557,23 @@ class SendToPropertyInspectorEvent extends CommonReceivedEvent {
   Map<String, Object?> toJson() => _$SendToPropertyInspectorEventToJson(this);
 }
 
+/// Information about the Stream Deck application and connected Stream Decks
+/// provided when the plugin process is started.
 @JsonSerializable()
 class ServiceInfo {
   ServiceInfo();
+
   factory ServiceInfo.fromJson(Map<String, Object?> json) =>
       _$ServiceInfoFromJson(json);
 
   Map<String, Object?> toJson() => _$ServiceInfoToJson(this);
 }
 
+/// An event sent to persistent data globally.
+///
+/// The data will be saved securely to the Keychain on macOS and the Credential
+/// Store on Windows. This API can be used to save tokens that should be
+/// available to every action in the plugin.
 @JsonSerializable()
 class SetGlobalSettingsEvent extends CommonSentEvent {
   static const eventId = 'setGlobalSettings';
@@ -533,6 +593,8 @@ class SetGlobalSettingsEvent extends CommonSentEvent {
   Map<String, Object?> toJson() => _$SetGlobalSettingsEventToJson(this);
 }
 
+/// Event sent to dynamically change the image displayed by an instance of an
+/// action.
 @JsonSerializable()
 class SetImageEvent extends CommonSentEvent {
   static const eventId = 'setImage';
@@ -574,6 +636,7 @@ class SetImagePayload extends Payload {
   Map<String, Object?> toJson() => _$SetImagePayloadToJson(this);
 }
 
+/// An event sent to persistent data for an actions instance.
 @JsonSerializable()
 class SetSettingsEvent extends CommonSentEvent {
   static const eventId = 'setSettings';
@@ -593,6 +656,8 @@ class SetSettingsEvent extends CommonSentEvent {
   Map<String, Object?> toJson() => _$SetSettingsEventToJson(this);
 }
 
+/// Event sent to change the active state of an action supporting multiple
+/// states.
 @JsonSerializable()
 class SetStateEvent extends CommonSentEvent {
   static const eventId = 'setState';
@@ -626,6 +691,8 @@ class SetStatePayload extends Payload {
   Map<String, Object?> toJson() => _$SetStatePayloadToJson(this);
 }
 
+/// Event sent to dynamically change the title displayed by an instance of an
+/// action.
 @JsonSerializable()
 class SetTitleEvent extends CommonSentEvent {
   static const eventId = 'setTitle';
@@ -667,6 +734,8 @@ class SetTitlePayload extends Payload {
   Map<String, Object?> toJson() => _$SetTitlePayloadToJson(this);
 }
 
+/// Event sent to temporarily show an alert icon on the image displayed by an
+/// instance of an action.
 @JsonSerializable()
 class ShowAlertEvent extends CommonSentEvent {
   static const eventId = 'showAlert';
@@ -683,6 +752,8 @@ class ShowAlertEvent extends CommonSentEvent {
   Map<String, Object?> toJson() => _$ShowAlertEventToJson(this);
 }
 
+/// Event sent to temporarily show an OK checkmark icon on the image displayed
+/// by an instance of an action.
 @JsonSerializable()
 class ShowOkEvent extends CommonSentEvent {
   static const eventId = 'showOk';
@@ -699,6 +770,8 @@ class ShowOkEvent extends CommonSentEvent {
   Map<String, Object?> toJson() => _$ShowOkEventToJson(this);
 }
 
+/// Event sent to switch the Stream Deck to a read-only profile preconfigured by
+/// the plugin.
 @JsonSerializable()
 class SwitchToProfileEvent extends CommonSentEvent {
   static const eventId = 'switchToProfile';
@@ -734,6 +807,7 @@ class SwitchToProfilePayload extends Payload {
   Map<String, Object?> toJson() => _$SwitchToProfilePayloadToJson(this);
 }
 
+/// Event received when the computer wakes up.
 @JsonSerializable()
 class SystemDidWakeUpEvent extends Event {
   static const eventId = 'systemDidWakeUp';
@@ -749,21 +823,30 @@ class SystemDidWakeUpEvent extends Event {
   Map<String, Object?> toJson() => _$SystemDidWakeUpEventToJson(this);
 }
 
+/// The target for a setTitle/setImage request indicating where the title/image
+/// should be updated.
 enum Target {
+  /// Update both software and hardware.
   @JsonValue(0)
   all,
+
+  /// Update only on the Stream Deck hardware device.
   @JsonValue(1)
   hardware,
+
+  /// Update only in the Stream Deck software.
   @JsonValue(2)
   software,
 }
 
+/// Alignment for a title.
 enum TitleAlignment {
   top,
   bottom,
   middle,
 }
 
+/// Parameters that control how a title is displayed.
 @JsonSerializable()
 class TitleParameters {
   final String fontFamily;
@@ -790,6 +873,7 @@ class TitleParameters {
   Map<String, Object?> toJson() => _$TitleParametersToJson(this);
 }
 
+/// Event received when the user changes the title or title parameters.
 @JsonSerializable()
 class TitleParametersDidChangeEvent extends CommonReceivedEvent {
   static const eventId = 'titleParametersDidChange';
@@ -832,6 +916,15 @@ class TitleParametersDidChangePayload extends CommonReceivedPayload {
       _$TitleParametersDidChangePayloadToJson(this);
 }
 
+/// Event received when an instance of an action is about to be displayed on the
+/// Stream Deck.
+///
+/// This can occur when:
+///
+/// - A device is connected
+/// - The Stream Deck application is started
+/// - The user adds the action to a key
+/// - The user switches to a profile that contains instances of an action
 @JsonSerializable()
 class WillAppearEvent extends CommonReceivedEvent {
   static const eventId = 'willAppear';
@@ -853,6 +946,13 @@ class WillAppearEvent extends CommonReceivedEvent {
   Map<String, Object?> toJson() => _$WillAppearEventToJson(this);
 }
 
+/// Event received when an instance of an action is about to be removed from
+/// display on the Stream Deck.
+///
+/// This can occur when:
+///
+/// - The user removes the action from a key
+/// - The user switches to another profile
 @JsonSerializable()
 class WillDisappearEvent extends CommonReceivedEvent {
   static const eventId = 'willDisappear';
