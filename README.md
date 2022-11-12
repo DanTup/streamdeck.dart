@@ -1,6 +1,6 @@
 # package:streamdeck
 
-## A package for creating plugins for the Elgato Stream Deck.
+## A Dart package for building plugins for the Elgato Stream Deck in Dart.
 
 Create actions that extend from `StreamDeckPluginAction` and a plugin class that extends `StreamDeckPlugin` to register them.
 

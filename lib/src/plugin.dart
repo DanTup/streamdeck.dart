@@ -19,7 +19,7 @@ typedef PluginConstructor<T extends StreamDeckPlugin> = T Function({
 abstract class StreamDeckPlugin {
   final String pluginUuid;
   final String _registerEvent;
-  final ServiceInfo _info;
+  final ServiceInfo _info; // ignore: unused_field
 
   final IOSink? _logSink;
   final WebSocket _socket;
