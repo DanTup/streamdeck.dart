@@ -4,7 +4,7 @@ import 'package:streamdeck/streamdeck.dart';
 
 /// A simple action that shows a clock.
 class ClockAction extends StreamDeckPluginAction {
-  static const actionUuid = 'com.dantup.streamdeck.clock';
+  static const actionUuid = 'com.dantup.streamdeck.example.clock';
 
   Timer? _timer;
 

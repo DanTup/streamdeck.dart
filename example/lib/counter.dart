@@ -5,7 +5,7 @@ import 'package:streamdeck/streamdeck.dart';
 /// Each instance contains its own count, so multiple instances of this action
 /// will count independently.
 class CounterAction extends StreamDeckPluginAction {
-  static const actionUuid = 'com.dantup.streamdeck.counter';
+  static const actionUuid = 'com.dantup.streamdeck.example.counter';
 
   int _count = 0;
 

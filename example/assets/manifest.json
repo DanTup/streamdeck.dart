@@ -10,7 +10,7 @@
           "FontSize": "16"
         }
       ],
-      "UUID": "com.dantup.streamdeck.counter"
+      "UUID": "com.dantup.streamdeck.example.counter"
     },
     {
       "Icon": "clockIcon",
@@ -22,7 +22,7 @@
           "FontSize": "12"
         }
       ],
-      "UUID": "com.dantup.streamdeck.clock"
+      "UUID": "com.dantup.streamdeck.example.clock"
     },
     {
       "Icon": "genericIcon",
@@ -34,15 +34,17 @@
           "FontSize": "12"
         }
       ],
-      "UUID": "com.dantup.streamdeck.hold"
+      "UUID": "com.dantup.streamdeck.example.hold"
     }
   ],
   "SDKVersion": 2,
   "Author": "DanTup",
   "CodePath": "plugin",
-  "Description": "A sample plugin created in Dart.",
+  "Description": "An example plugin for the Elgato Stream Deck built in Dart using package:streamdeck.",
   "Name": "DanTup's sample plugin",
-  "Icon": "icon",
+  "Icon": "pluginIcon",
+  "Category": "Example",
+  "CategoryIcon": "pluginIcon",
   "URL": "https://github.com/DanTup/streamdeck.dart",
   "Version": "1.0.0",
   "OS": [

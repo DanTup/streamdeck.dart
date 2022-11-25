@@ -7,7 +7,6 @@ import 'package:streamdeck_example_plugin/plugin.dart';
 
 final logFilePath = path.join(
   path.dirname(Platform.script.toFilePath()),
-  '..',
   'log.txt',
 );
 

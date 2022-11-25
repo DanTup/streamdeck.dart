@@ -1,6 +1,6 @@
 name: streamdeck_example_plugin
 publish_to: 'none'
-description: A sample plugin for the Elgato Stream Deck built with package:streamdeck.
+description: An example plugin for the Elgato Stream Deck built in Dart using package:streamdeck.
 version: 0.1.0
 repository: https://github.com/DanTup/streamdeck.dart
 

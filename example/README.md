@@ -1,6 +1,6 @@
 # streamdeck_example_plugin
 
-## An example plugin for the Elgato Stream Deck built using package:streamdeck.
+## An example plugin for the Elgato Stream Deck built in Dart using package:streamdeck.
 
 Examples:
 

@@ -677,6 +677,8 @@ class SetStateEvent extends CommonSentEvent {
   Map<String, Object?> toJson() => _$SetStateEventToJson(this);
 }
 
+/// Event send to dynamically change the state of an action supporting multiple
+/// states.
 @JsonSerializable()
 class SetStatePayload extends Payload {
   final int state;

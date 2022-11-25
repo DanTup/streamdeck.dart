@@ -5,7 +5,7 @@ import 'package:streamdeck/streamdeck.dart';
 ///
 /// Uses the [LongPressDetection] mixin.
 class HoldAction extends StreamDeckPluginAction with LongPressDetection {
-  static const actionUuid = 'com.dantup.streamdeck.hold';
+  static const actionUuid = 'com.dantup.streamdeck.example.hold';
 
   HoldAction(super.plugin, super.context);
 

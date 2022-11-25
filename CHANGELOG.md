@@ -1,4 +1,20 @@
-## 0.2.0-dev _(TBD)_
+## 0.2.0 _2022-11-25_
+
+- `didReceiveSettings` support
+- `didReceiveGlobalSettings` support
+- `applicationDidLaunch` support
+- `applicationDidTerminate` support
+- `systemDidWakeUp` support
+- `propertyInspectorDidAppear` support
+- `propertyInspectorDidDisappear` support
+- `setSettings` support
+- `getSettings` support
+- `setGlobalSettings` support
+- `getGlobalSettings` support
+- `openUrl` support
+- `setState` support
+- `switchToProfile` support
+- `showImage` support and a `getImageAsset` helper on `StreamDeckPlugin` for reading image assets into the required form for `showImage`
 
 ## 0.1.2 _(2022-11-12)_
 

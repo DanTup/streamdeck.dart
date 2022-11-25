@@ -10,8 +10,8 @@ Implemented APIs:
 
 | Direction | Event | Implemented? | Examples |
 | --------- | ----- | ------------ | -------- |
-| Receive | didReceiveSettings | |
-| Receive | didReceiveGlobalSettings | |
+| Receive | didReceiveSettings | ✅ |
+| Receive | didReceiveGlobalSettings | ✅ |
 | Receive | keyDown | ✅ | [counter], [hold] ([LongPressDetection]) |
 | Receive | keyUp | ✅ | [hold] ([LongPressDetection]) |
 | Receive | willAppear | ✅ | [counter], [clock] |
@@ -19,25 +19,25 @@ Implemented APIs:
 | Receive | titleParametersDidChange | |
 | Receive | deviceDidConnect | ✅ |
 | Receive | deviceDidDisconnect | ✅ |
-| Receive | applicationDidLaunch | |
-| Receive | applicationDidTerminate | |
-| Receive | systemDidWakeUp | |
-| Receive | propertyInspectorDidAppear | |
-| Receive | propertyInspectorDidDisappear | |
+| Receive | applicationDidLaunch | ✅ |
+| Receive | applicationDidTerminate | ✅ |
+| Receive | systemDidWakeUp | ✅ |
+| Receive | propertyInspectorDidAppear | ✅ |
+| Receive | propertyInspectorDidDisappear | ✅ |
 | Receive | sendToPlugin | |
 | Receive | sendToPropertyInspector | |
-| Send | setSettings | |
-| Send | getSettings | |
-| Send | setGlobalSettings | |
-| Send | getGlobalSettings | |
-| Send | openUrl | |
+| Send | setSettings | ✅ |
+| Send | getSettings | ✅ |
+| Send | setGlobalSettings | ✅ |
+| Send | getGlobalSettings | ✅ |
+| Send | openUrl | ✅ |
 | Send | logMessage | ✅ | [counter]
 | Send | setTitle | ✅ | [counter], [clock]
-| Send | setImage | |
+| Send | setImage | ✅ |
 | Send | showAlert | ✅ | [hold]
 | Send | showOk | ✅ | [hold]
-| Send | setState | |
-| Send | switchToProfile | |
+| Send | setState | ✅ |
+| Send | switchToProfile | ✅ |
 | Send | sendToPropertyInspector | |
 | Send | sendToPlugin | |
 
