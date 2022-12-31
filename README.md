@@ -26,6 +26,9 @@ Implemented APIs:
 | Receive | propertyInspectorDidDisappear | ✅ |
 | Receive | sendToPlugin | |
 | Receive | sendToPropertyInspector | |
+| Receive | touchTap (SD+) | ✅ |
+| Receive | dialPress (SD+) | ✅ |
+| Receive | dialRotate (SD+) | ✅ |
 | Send | setSettings | ✅ |
 | Send | getSettings | ✅ |
 | Send | setGlobalSettings | ✅ |
@@ -40,6 +43,8 @@ Implemented APIs:
 | Send | switchToProfile | ✅ |
 | Send | sendToPropertyInspector | |
 | Send | sendToPlugin | |
+| Send | setFeedback (SD+) | ✅ |
+| Send | setFeedbackLayout (SD+) | ✅ |
 
 [example plugin]: https://github.com/DanTup/streamdeck.dart/blob/main/example/
 [counter]: https://github.com/DanTup/streamdeck.dart/blob/main/example/lib/counter.dart

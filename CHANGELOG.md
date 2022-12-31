@@ -1,3 +1,12 @@
+## 0.3.0 _????-??-??_
+
+- Add support for StreamDeck+:
+  - `touchTap` support
+  - `dialPress` support
+  - `dialRotate` support
+  - `setFeedback` support
+  - `setFeedbackLayout` support
+
 ## 0.2.0 _2022-11-25_
 
 - `didReceiveSettings` support

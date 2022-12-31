@@ -164,6 +164,76 @@ Map<String, dynamic> _$DeviceSizeToJson(DeviceSize instance) =>
       'rows': instance.rows,
     };
 
+DialPressEvent _$DialPressEventFromJson(Map<String, dynamic> json) =>
+    DialPressEvent(
+      event: json['event'] as String? ?? DialPressEvent.eventId,
+      action: json['action'] as String,
+      context: json['context'] as String,
+      device: json['device'] as String,
+      payload:
+          DialPressPayload.fromJson(json['payload'] as Map<String, dynamic>),
+    );
+
+Map<String, dynamic> _$DialPressEventToJson(DialPressEvent instance) =>
+    <String, dynamic>{
+      'event': instance.event,
+      'action': instance.action,
+      'context': instance.context,
+      'device': instance.device,
+      'payload': instance.payload,
+    };
+
+DialPressPayload _$DialPressPayloadFromJson(Map<String, dynamic> json) =>
+    DialPressPayload(
+      settings: json['settings'] as Map<String, dynamic>,
+      coordinates:
+          Coordinates.fromJson(json['coordinates'] as Map<String, dynamic>),
+      pressed: json['pressed'] as bool,
+    );
+
+Map<String, dynamic> _$DialPressPayloadToJson(DialPressPayload instance) =>
+    <String, dynamic>{
+      'settings': instance.settings,
+      'coordinates': instance.coordinates,
+      'pressed': instance.pressed,
+    };
+
+DialRotateEvent _$DialRotateEventFromJson(Map<String, dynamic> json) =>
+    DialRotateEvent(
+      event: json['event'] as String? ?? DialRotateEvent.eventId,
+      action: json['action'] as String,
+      context: json['context'] as String,
+      device: json['device'] as String,
+      payload:
+          DialRotatePayload.fromJson(json['payload'] as Map<String, dynamic>),
+    );
+
+Map<String, dynamic> _$DialRotateEventToJson(DialRotateEvent instance) =>
+    <String, dynamic>{
+      'event': instance.event,
+      'action': instance.action,
+      'context': instance.context,
+      'device': instance.device,
+      'payload': instance.payload,
+    };
+
+DialRotatePayload _$DialRotatePayloadFromJson(Map<String, dynamic> json) =>
+    DialRotatePayload(
+      settings: json['settings'] as Map<String, dynamic>,
+      coordinates:
+          Coordinates.fromJson(json['coordinates'] as Map<String, dynamic>),
+      ticks: json['ticks'] as int,
+      pressed: json['pressed'] as bool,
+    );
+
+Map<String, dynamic> _$DialRotatePayloadToJson(DialRotatePayload instance) =>
+    <String, dynamic>{
+      'settings': instance.settings,
+      'coordinates': instance.coordinates,
+      'ticks': instance.ticks,
+      'pressed': instance.pressed,
+    };
+
 DidReceiveGlobalSettingsEvent _$DidReceiveGlobalSettingsEventFromJson(
         Map<String, dynamic> json) =>
     DidReceiveGlobalSettingsEvent(
@@ -426,6 +496,49 @@ ServiceInfo _$ServiceInfoFromJson(Map<String, dynamic> json) => ServiceInfo();
 
 Map<String, dynamic> _$ServiceInfoToJson(ServiceInfo instance) =>
     <String, dynamic>{};
+
+SetFeedbackEvent _$SetFeedbackEventFromJson(Map<String, dynamic> json) =>
+    SetFeedbackEvent(
+      event: json['event'] as String? ?? SetFeedbackEvent.eventId,
+      context: json['context'] as String,
+      payload: Map<String, String>.from(json['payload'] as Map),
+    );
+
+Map<String, dynamic> _$SetFeedbackEventToJson(SetFeedbackEvent instance) =>
+    <String, dynamic>{
+      'event': instance.event,
+      'context': instance.context,
+      'payload': instance.payload,
+    };
+
+SetFeedbackLayoutEvent _$SetFeedbackLayoutEventFromJson(
+        Map<String, dynamic> json) =>
+    SetFeedbackLayoutEvent(
+      event: json['event'] as String? ?? SetFeedbackLayoutEvent.eventId,
+      context: json['context'] as String,
+      payload: SetFeedbackLayoutPayload.fromJson(
+          json['payload'] as Map<String, dynamic>),
+    );
+
+Map<String, dynamic> _$SetFeedbackLayoutEventToJson(
+        SetFeedbackLayoutEvent instance) =>
+    <String, dynamic>{
+      'event': instance.event,
+      'context': instance.context,
+      'payload': instance.payload,
+    };
+
+SetFeedbackLayoutPayload _$SetFeedbackLayoutPayloadFromJson(
+        Map<String, dynamic> json) =>
+    SetFeedbackLayoutPayload(
+      layout: json['layout'] as String,
+    );
+
+Map<String, dynamic> _$SetFeedbackLayoutPayloadToJson(
+        SetFeedbackLayoutPayload instance) =>
+    <String, dynamic>{
+      'layout': instance.layout,
+    };
 
 SetGlobalSettingsEvent _$SetGlobalSettingsEventFromJson(
         Map<String, dynamic> json) =>
@@ -710,6 +823,42 @@ Map<String, dynamic> _$TitleParametersDidChangePayloadToJson(
   val['titleParameters'] = instance.titleParameters;
   return val;
 }
+
+TouchTapEvent _$TouchTapEventFromJson(Map<String, dynamic> json) =>
+    TouchTapEvent(
+      event: json['event'] as String? ?? TouchTapEvent.eventId,
+      action: json['action'] as String,
+      context: json['context'] as String,
+      device: json['device'] as String,
+      payload:
+          TouchTapPayload.fromJson(json['payload'] as Map<String, dynamic>),
+    );
+
+Map<String, dynamic> _$TouchTapEventToJson(TouchTapEvent instance) =>
+    <String, dynamic>{
+      'event': instance.event,
+      'action': instance.action,
+      'context': instance.context,
+      'device': instance.device,
+      'payload': instance.payload,
+    };
+
+TouchTapPayload _$TouchTapPayloadFromJson(Map<String, dynamic> json) =>
+    TouchTapPayload(
+      settings: json['settings'] as Map<String, dynamic>,
+      coordinates:
+          Coordinates.fromJson(json['coordinates'] as Map<String, dynamic>),
+      tapPos: (json['tapPos'] as List<dynamic>).map((e) => e as int).toList(),
+      hold: json['hold'] as bool,
+    );
+
+Map<String, dynamic> _$TouchTapPayloadToJson(TouchTapPayload instance) =>
+    <String, dynamic>{
+      'settings': instance.settings,
+      'coordinates': instance.coordinates,
+      'tapPos': instance.tapPos,
+      'hold': instance.hold,
+    };
 
 WillAppearEvent _$WillAppearEventFromJson(Map<String, dynamic> json) =>
     WillAppearEvent(
