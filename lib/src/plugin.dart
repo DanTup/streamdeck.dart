@@ -174,6 +174,17 @@ abstract class StreamDeckPlugin {
     _sendEvent(SetImageEvent(context: context, payload: payload));
   }
 
+  /// Dynamically changes the properties of items on the touch display
+  /// (StreamDeck+ only).
+  void setFeedback(String context, SetFeedbackPayload payload) {
+    _sendEvent(SetFeedbackEvent(context: context, payload: payload));
+  }
+
+  /// Dynamically changes the touch display layout (StreamDeck+ only).
+  void setFeedbackLayout(String context, SetFeedbackLayoutPayload payload) {
+    _sendEvent(SetFeedbackLayoutEvent(context: context, payload: payload));
+  }
+
   /// Returns the image named [filename] in the plugin folder as a base64 string
   /// formatted for [setImage].
   ///
@@ -229,6 +240,21 @@ abstract class StreamDeckPlugin {
     _actionContexts[event.context]?.willDisappear(event);
   }
 
+  /// Called when the user touches the display (StreamDeck+ only).
+  void touchTap(TouchTapEvent event) {
+    _actionContexts[event.context]?.touchTap(event);
+  }
+
+  /// Called when the user presses or releases the encoder (StreamDeck+ only).
+  void dialPress(DialPressEvent event) {
+    _actionContexts[event.context]?.dialPress(event);
+  }
+
+  /// Called when the user rotates the encoder (StreamDeck+ only).
+  void dialRotate(DialRotateEvent event) {
+    _actionContexts[event.context]?.dialRotate(event);
+  }
+
   void _handleSocketEvent(String jsonString) {
     logDebug('DECK-->PLUGIN: $jsonString');
     final data = jsonDecode(jsonString);
@@ -246,6 +272,12 @@ abstract class StreamDeckPlugin {
           return willAppear(WillAppearEvent.fromJson(data));
         case WillDisappearEvent.eventId:
           return willDisappear(WillDisappearEvent.fromJson(data));
+        case TouchTapEvent.eventId:
+          return touchTap(TouchTapEvent.fromJson(data));
+        case DialPressEvent.eventId:
+          return dialPress(DialPressEvent.fromJson(data));
+        case DialRotateEvent.eventId:
+          return dialRotate(DialRotateEvent.fromJson(data));
         default:
       }
     }
@@ -367,6 +399,17 @@ abstract class StreamDeckPluginAction<T extends StreamDeckPlugin> {
     plugin.setImage(context, payload);
   }
 
+  /// Dynamically changes the properties of items on the touch display
+  /// (StreamDeck+ only).
+  void setFeedback(SetFeedbackPayload payload) {
+    plugin.setFeedback(context, payload);
+  }
+
+  /// Dynamically changes the touch display layout (StreamDeck+ only).
+  void setFeedbackLayout(SetFeedbackLayoutPayload payload) {
+    plugin.setFeedbackLayout(context, payload);
+  }
+
   /// Temporarily shows an alert icon on the image displayed by an instance of
   /// an action.
   void showAlert() {
@@ -386,4 +429,13 @@ abstract class StreamDeckPluginAction<T extends StreamDeckPlugin> {
   /// Called when an instance of an action is about to be removed from display
   /// on the Stream Deck.
   void willDisappear(WillDisappearEvent event) {}
+
+  /// Called when the user touches the display (StreamDeck+ only).
+  void touchTap(TouchTapEvent event) {}
+
+  /// Called when the user presses or releases the encoder (StreamDeck+ only).
+  void dialPress(DialPressEvent event) {}
+
+  /// Called when the user rotates the encoder (StreamDeck+ only).
+  void dialRotate(DialRotateEvent event) {}
 }

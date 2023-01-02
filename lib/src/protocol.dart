@@ -2,6 +2,8 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'protocol.g.dart';
 
+typedef SetFeedbackPayload = Map<String, String>;
+
 /// Event received when a monitored application is launched.
 ///
 /// A plugin can request in its `manifest.json` to be notified when some
@@ -217,6 +219,97 @@ class DeviceSize {
       _$DeviceSizeFromJson(json);
 
   Map<String, Object?> toJson() => _$DeviceSizeToJson(this);
+}
+
+/// Event received when the user presses or releases the encoder (StreamDeck+ only).
+@JsonSerializable()
+class DialPressEvent extends CommonReceivedEvent {
+  static const eventId = 'dialPress';
+
+  final DialPressPayload payload;
+
+  DialPressEvent({
+    super.event = DialPressEvent.eventId,
+    required super.action,
+    required super.context,
+    required super.device,
+    required this.payload,
+  });
+
+  factory DialPressEvent.fromJson(Map<String, Object?> json) =>
+      _$DialPressEventFromJson(json);
+
+  @override
+  Map<String, Object?> toJson() => _$DialPressEventToJson(this);
+}
+
+@JsonSerializable()
+class DialPressPayload extends Payload {
+  final Map<String, Object?> settings;
+  final Coordinates coordinates;
+
+  /// `true` if the encoder was pressed, `false` if released.
+  final bool pressed;
+
+  DialPressPayload({
+    required this.settings,
+    required this.coordinates,
+    required this.pressed,
+  });
+
+  factory DialPressPayload.fromJson(Map<String, Object?> json) =>
+      _$DialPressPayloadFromJson(json);
+
+  Map<String, Object?> toJson() => _$DialPressPayloadToJson(this);
+}
+
+/// Event received when the user rotates the encoder (StreamDeck+ only).
+@JsonSerializable()
+class DialRotateEvent extends CommonReceivedEvent {
+  static const eventId = 'dialRotate';
+
+  final DialRotatePayload payload;
+
+  DialRotateEvent({
+    super.event = DialRotateEvent.eventId,
+    required super.action,
+    required super.context,
+    required super.device,
+    required this.payload,
+  });
+
+  factory DialRotateEvent.fromJson(Map<String, Object?> json) =>
+      _$DialRotateEventFromJson(json);
+
+  @override
+  Map<String, Object?> toJson() => _$DialRotateEventToJson(this);
+}
+
+@JsonSerializable()
+class DialRotatePayload extends Payload {
+  final Map<String, Object?> settings;
+  final Coordinates coordinates;
+
+  /// The number of ticks of the encoder rotation.
+  ///
+  /// Positive values are for clockwise rotation, negative values for
+  /// counterclockwise rotation. Value is never zero.
+  final int ticks;
+
+  /// `true` if the encoder was pressed while rotating.
+  final bool pressed;
+
+  DialRotatePayload({
+    required this.settings,
+    required this.coordinates,
+    required this.ticks,
+    required this.pressed,
+  });
+
+  factory DialRotatePayload.fromJson(Map<String, Object?> json) =>
+      _$DialRotatePayloadFromJson(json);
+
+  Map<String, Object?> toJson() => _$DialRotatePayloadToJson(this);
 }
 
 /// Event received after calling the `getGlobalSettings` API to retrieve the
@@ -569,6 +662,61 @@ class ServiceInfo {
   Map<String, Object?> toJson() => _$ServiceInfoToJson(this);
 }
 
+/// Event sent to dynamically change the properties of items on the touch
+/// display (StreamDeck+ only).
+@JsonSerializable()
+class SetFeedbackEvent extends CommonSentEvent {
+  static const eventId = 'setFeedback';
+
+  final SetFeedbackPayload payload;
+
+  SetFeedbackEvent({
+    super.event = SetFeedbackEvent.eventId,
+    required super.context,
+    required this.payload,
+  });
+
+  factory SetFeedbackEvent.fromJson(Map<String, Object?> json) =>
+      _$SetFeedbackEventFromJson(json);
+
+  @override
+  Map<String, Object?> toJson() => _$SetFeedbackEventToJson(this);
+}
+
+/// Event sent to dynamically change the touch display layout (StreamDeck+ only).
+@JsonSerializable()
+class SetFeedbackLayoutEvent extends CommonSentEvent {
+  static const eventId = 'setFeedbackLayout';
+
+  final SetFeedbackLayoutPayload payload;
+
+  SetFeedbackLayoutEvent({
+    super.event = SetFeedbackLayoutEvent.eventId,
+    required super.context,
+    required this.payload,
+  });
+
+  factory SetFeedbackLayoutEvent.fromJson(Map<String, Object?> json) =>
+      _$SetFeedbackLayoutEventFromJson(json);
+
+  @override
+  Map<String, Object?> toJson() => _$SetFeedbackLayoutEventToJson(this);
+}
+
+@JsonSerializable()
+class SetFeedbackLayoutPayload extends Payload {
+  final String layout;
+
+  SetFeedbackLayoutPayload({
+    required this.layout,
+  });
+
+  factory SetFeedbackLayoutPayload.fromJson(Map<String, Object?> json) =>
+      _$SetFeedbackLayoutPayloadFromJson(json);
+
+  Map<String, Object?> toJson() => _$SetFeedbackLayoutPayloadToJson(this);
+}
+
 /// An event sent to persistent data globally.
 ///
 /// The data will be saved securely to the Keychain on macOS and the Credential
@@ -916,6 +1064,53 @@ class TitleParametersDidChangePayload extends CommonReceivedPayload {
   @override
   Map<String, Object?> toJson() =>
       _$TitleParametersDidChangePayloadToJson(this);
+}
+
+/// Event received when the user touches the display (StreamDeck+ only).
+@JsonSerializable()
+class TouchTapEvent extends CommonReceivedEvent {
+  static const eventId = 'touchTap';
+
+  final TouchTapPayload payload;
+
+  TouchTapEvent({
+    super.event = TouchTapEvent.eventId,
+    required super.action,
+    required super.context,
+    required super.device,
+    required this.payload,
+  });
+
+  factory TouchTapEvent.fromJson(Map<String, Object?> json) =>
+      _$TouchTapEventFromJson(json);
+
+  @override
+  Map<String, Object?> toJson() => _$TouchTapEventToJson(this);
+}
+
+@JsonSerializable()
+class TouchTapPayload extends Payload {
+  final Map<String, Object?> settings;
+  final Coordinates coordinates;
+
+  /// The array which holds (x, y) coordinates as a position of tap inside of
+  /// LCD slot associated with action.
+  final List<int> tapPos;
+
+  /// Whether a long tap happened.
+  final bool hold;
+
+  TouchTapPayload({
+    required this.settings,
+    required this.coordinates,
+    required this.tapPos,
+    required this.hold,
+  });
+
+  factory TouchTapPayload.fromJson(Map<String, Object?> json) =>
+      _$TouchTapPayloadFromJson(json);
+
+  Map<String, Object?> toJson() => _$TouchTapPayloadToJson(this);
 }
 
 /// Event received when an instance of an action is about to be displayed on the
