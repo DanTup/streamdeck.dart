@@ -50,6 +50,30 @@
     },
     {
       "Icon": "genericIcon",
+      "Name": "Image",
+      "States": [
+        {
+          "Image": "genericIcon"
+        }
+      ],
+      "Controllers": ["Encoder"],
+      "Encoder": {
+        "background": "backgroundImage",
+        "Icon": "genericIcon",
+        "layout": "$A0",
+        "StackColor": "#AABBCC",
+        "TriggerDescription": {
+          "Rotate": "Move the circle",
+          "Push": "Reset position",
+          "Touch": "Unused",
+          "LongTouch": "Unused"
+        }
+      },
+      "SupportedInMultiActions": false,
+      "UUID": "com.dantup.streamdeck.example.image"
+    },
+    {
+      "Icon": "genericIcon",
       "Name": "Hold",
       "States": [
         {
