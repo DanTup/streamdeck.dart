@@ -17,12 +17,36 @@
       "Name": "Clock",
       "States": [
         {
-          "Image": "clockIcon",
+          "Image": "clockIcon"
+        }
+      ],
+      "UUID": "com.dantup.streamdeck.example.clock"
+    },
+    {
+      "Icon": "genericIcon",
+      "Name": "Indicator",
+      "States": [
+        {
+          "Image": "genericIcon",
           "TitleAlignment": "middle",
           "FontSize": "12"
         }
       ],
-      "UUID": "com.dantup.streamdeck.example.clock"
+      "Controllers": ["Encoder"],
+      "Encoder": {
+        "background": "backgroundImage",
+        "Icon": "genericIcon",
+        "layout": "$B1",
+        "StackColor": "#0000FF",
+        "TriggerDescription": {
+          "Rotate": "Change the value",
+          "Push": "Set the value to 0",
+          "Touch": "Set the value to 100",
+          "LongTouch": "Reset the value to initial 42"
+        }
+      },
+      "SupportedInMultiActions": false,
+      "UUID": "com.dantup.streamdeck.example.indicator"
     },
     {
       "Icon": "genericIcon",

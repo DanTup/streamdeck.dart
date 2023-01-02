@@ -2,6 +2,7 @@ import 'package:streamdeck/streamdeck.dart';
 import 'package:streamdeck_example_plugin/clock.dart';
 import 'package:streamdeck_example_plugin/counter.dart';
 import 'package:streamdeck_example_plugin/hold.dart';
+import 'package:streamdeck_example_plugin/indicator.dart';
 
 class Plugin extends StreamDeckPlugin {
   Plugin({
@@ -14,5 +15,6 @@ class Plugin extends StreamDeckPlugin {
     registerAction(CounterAction.actionUuid, CounterAction.new);
     registerAction(ClockAction.actionUuid, ClockAction.new);
     registerAction(HoldAction.actionUuid, HoldAction.new);
+    registerAction(IndicatorAction.actionUuid, IndicatorAction.new);
   }
 }
