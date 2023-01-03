@@ -8,8 +8,6 @@ mkdir -p "$PLUGINDIR"
 cp -rf ./assets/ "$PLUGINDIR"
 dart compile exe bin/main.dart -o "$PLUGINDIR/plugin"
 
-open -a "Stream Deck"
+open -a "Elgato Stream Deck"
 
 popd > /dev/null
-
-
