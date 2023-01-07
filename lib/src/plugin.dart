@@ -264,6 +264,14 @@ abstract class StreamDeckPlugin {
           return deviceDidConnect(DeviceDidConnectEvent.fromJson(data));
         case DeviceDidDisconnectEvent.eventId:
           return deviceDidDisconnect(DeviceDidDisconnectEvent.fromJson(data));
+        case DidReceiveSettingsEvent.eventId:
+          return didReceiveSettings(DidReceiveSettingsEvent.fromJson(data));
+        case DidReceiveGlobalSettingsEvent.eventId:
+          return didReceiveGlobalSettings(DidReceiveGlobalSettingsEvent.fromJson(data));
+        case ApplicationDidLaunchEvent.eventId:
+          return applicationDidLaunch(ApplicationDidLaunchEvent.fromJson(data));
+        case ApplicationDidTerminateEvent.eventId:
+          return applicationDidTerminate(ApplicationDidTerminateEvent.fromJson(data));
         case KeyDownEvent.eventId:
           return keyDown(KeyDownEvent.fromJson(data));
         case KeyUpEvent.eventId:
