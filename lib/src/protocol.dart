@@ -320,7 +320,7 @@ class DialRotatePayload extends Payload {
 /// plugin calls the `setGlobalSettings` API.
 @JsonSerializable()
 class DidReceiveGlobalSettingsEvent extends Event {
-  static const eventId = 'didReceiveSettings';
+  static const eventId = 'didReceiveGlobalSettings';
 
   final DidReceiveGlobalSettingsPayload payload;
 
