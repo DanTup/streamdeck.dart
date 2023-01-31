@@ -3,5 +3,5 @@
 .packages
 build/
 doc/
-example/pubspec.lock
 log.txt
+pubspec.lock
