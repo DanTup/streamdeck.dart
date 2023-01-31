@@ -1,4 +1,4 @@
-## 0.3.0 _????-??-??_
+## 0.3.0 _2023-01-31_
 
 - Add support for StreamDeck+:
   - `touchTap` support
@@ -6,6 +6,9 @@
   - `dialRotate` support
   - `setFeedback` support
   - `setFeedbackLayout` support
+- Fire `longPress` when using the `LongPressDetection` mixin after 1 second, instead of only when the button is released
+- Add new `indicator` and `image` examples
+- Wire up missing handlers for `DidReceiveSettingsEvent`, `DidReceiveGlobalSettingsEvent`, `ApplicationDidLaunchEvent`, `ApplicationDidTerminateEvent`
 
 ## 0.2.0 _2022-11-25_
 
