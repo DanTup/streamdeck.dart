@@ -143,6 +143,18 @@ abstract class StreamDeckPlugin {
     _actionConstructors[actionUuid] = constructor;
   }
 
+  /// Called on the plugin after the Property Inspector calls the
+  /// [sendToPlugin] API.
+  void sendToPlugin(SendToPluginEvent event) {
+    _actionContexts[event.context]?.sendToPlugin(event);
+  }
+
+  /// Sends a message to the property inspector.
+  void sendToPropertyInspector(String context, Map<String, Object?> payload) {
+    _sendEvent(
+        SendToPropertyInspectorEvent(context: context, payload: payload));
+  }
+
   /// Persists settings data that is available to all actions globally.
   void setGlobalSettings(Map<String, Object?> payload) {
     _sendEvent(SetGlobalSettingsEvent(context: pluginUuid, payload: payload));
@@ -276,6 +288,8 @@ abstract class StreamDeckPlugin {
           return keyDown(KeyDownEvent.fromJson(data));
         case KeyUpEvent.eventId:
           return keyUp(KeyUpEvent.fromJson(data));
+        case SendToPluginEvent.eventId:
+          return sendToPlugin(SendToPluginEvent.fromJson(data));
         case WillAppearEvent.eventId:
           return willAppear(WillAppearEvent.fromJson(data));
         case WillDisappearEvent.eventId:
@@ -372,6 +386,9 @@ abstract class StreamDeckPluginAction<T extends StreamDeckPlugin> {
   void logMessage(LogMessagePayload payload) {
     plugin.logMessage(context, payload);
   }
+
+  /// Occurs when a message was sent to the plugin from the property inspector.
+  void sendToPlugin(SendToPluginEvent event) {}
 
   /// Tells the Stream Deck application to open an URL in the default browser.
   void openUrl(OpenUrlPayload payload) {

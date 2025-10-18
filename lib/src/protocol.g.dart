@@ -52,7 +52,7 @@ CommonReceivedPayload _$CommonReceivedPayloadFromJson(
       settings: json['settings'] as Map<String, dynamic>,
       coordinates:
           Coordinates.fromJson(json['coordinates'] as Map<String, dynamic>),
-      state: json['state'] as int?,
+      state: (json['state'] as num?)?.toInt(),
     );
 
 Map<String, dynamic> _$CommonReceivedPayloadToJson(
@@ -77,7 +77,7 @@ ContextPayload _$ContextPayloadFromJson(Map<String, dynamic> json) =>
       settings: json['settings'] as Map<String, dynamic>,
       coordinates:
           Coordinates.fromJson(json['coordinates'] as Map<String, dynamic>),
-      state: json['state'] as int?,
+      state: (json['state'] as num?)?.toInt(),
       isInMultiAction: json['isInMultiAction'] as bool,
     );
 
@@ -99,8 +99,8 @@ Map<String, dynamic> _$ContextPayloadToJson(ContextPayload instance) {
 }
 
 Coordinates _$CoordinatesFromJson(Map<String, dynamic> json) => Coordinates(
-      column: json['column'] as int,
-      row: json['row'] as int,
+      column: (json['column'] as num).toInt(),
+      row: (json['row'] as num).toInt(),
     );
 
 Map<String, dynamic> _$CoordinatesToJson(Coordinates instance) =>
@@ -142,7 +142,7 @@ Map<String, dynamic> _$DeviceDidDisconnectEventToJson(
 
 DeviceInfo _$DeviceInfoFromJson(Map<String, dynamic> json) => DeviceInfo(
       name: json['name'] as String,
-      type: json['type'] as int,
+      type: (json['type'] as num).toInt(),
       size: DeviceSize.fromJson(json['size'] as Map<String, dynamic>),
     );
 
@@ -154,8 +154,8 @@ Map<String, dynamic> _$DeviceInfoToJson(DeviceInfo instance) =>
     };
 
 DeviceSize _$DeviceSizeFromJson(Map<String, dynamic> json) => DeviceSize(
-      columns: json['columns'] as int,
-      rows: json['rows'] as int,
+      columns: (json['columns'] as num).toInt(),
+      rows: (json['rows'] as num).toInt(),
     );
 
 Map<String, dynamic> _$DeviceSizeToJson(DeviceSize instance) =>
@@ -222,7 +222,7 @@ DialRotatePayload _$DialRotatePayloadFromJson(Map<String, dynamic> json) =>
       settings: json['settings'] as Map<String, dynamic>,
       coordinates:
           Coordinates.fromJson(json['coordinates'] as Map<String, dynamic>),
-      ticks: json['ticks'] as int,
+      ticks: (json['ticks'] as num).toInt(),
       pressed: json['pressed'] as bool,
     );
 
@@ -328,8 +328,8 @@ KeyPayload _$KeyPayloadFromJson(Map<String, dynamic> json) => KeyPayload(
       settings: json['settings'] as Map<String, dynamic>,
       coordinates:
           Coordinates.fromJson(json['coordinates'] as Map<String, dynamic>),
-      state: json['state'] as int?,
-      userDesiredState: json['userDesiredState'] as int?,
+      state: (json['state'] as num?)?.toInt(),
+      userDesiredState: (json['userDesiredState'] as num?)?.toInt(),
       isInMultiAction: json['isInMultiAction'] as bool,
     );
 
@@ -459,7 +459,6 @@ SendToPluginEvent _$SendToPluginEventFromJson(Map<String, dynamic> json) =>
       event: json['event'] as String? ?? SendToPluginEvent.eventId,
       action: json['action'] as String,
       context: json['context'] as String,
-      device: json['device'] as String,
       payload: json['payload'] as Map<String, dynamic>,
     );
 
@@ -468,7 +467,6 @@ Map<String, dynamic> _$SendToPluginEventToJson(SendToPluginEvent instance) =>
       'event': instance.event,
       'action': instance.action,
       'context': instance.context,
-      'device': instance.device,
       'payload': instance.payload,
     };
 
@@ -476,9 +474,7 @@ SendToPropertyInspectorEvent _$SendToPropertyInspectorEventFromJson(
         Map<String, dynamic> json) =>
     SendToPropertyInspectorEvent(
       event: json['event'] as String? ?? SendToPropertyInspectorEvent.eventId,
-      action: json['action'] as String,
       context: json['context'] as String,
-      device: json['device'] as String,
       payload: json['payload'] as Map<String, dynamic>,
     );
 
@@ -486,9 +482,7 @@ Map<String, dynamic> _$SendToPropertyInspectorEventToJson(
         SendToPropertyInspectorEvent instance) =>
     <String, dynamic>{
       'event': instance.event,
-      'action': instance.action,
       'context': instance.context,
-      'device': instance.device,
       'payload': instance.payload,
     };
 
@@ -575,7 +569,7 @@ SetImagePayload _$SetImagePayloadFromJson(Map<String, dynamic> json) =>
     SetImagePayload(
       image: json['image'] as String,
       target: $enumDecodeNullable(_$TargetEnumMap, json['target']),
-      state: json['state'] as int?,
+      state: (json['state'] as num?)?.toInt(),
     );
 
 Map<String, dynamic> _$SetImagePayloadToJson(SetImagePayload instance) {
@@ -631,7 +625,7 @@ Map<String, dynamic> _$SetStateEventToJson(SetStateEvent instance) =>
 
 SetStatePayload _$SetStatePayloadFromJson(Map<String, dynamic> json) =>
     SetStatePayload(
-      state: json['state'] as int,
+      state: (json['state'] as num).toInt(),
     );
 
 Map<String, dynamic> _$SetStatePayloadToJson(SetStatePayload instance) =>
@@ -658,7 +652,7 @@ SetTitlePayload _$SetTitlePayloadFromJson(Map<String, dynamic> json) =>
     SetTitlePayload(
       title: json['title'] as String,
       target: $enumDecodeNullable(_$TargetEnumMap, json['target']),
-      state: json['state'] as int?,
+      state: (json['state'] as num?)?.toInt(),
     );
 
 Map<String, dynamic> _$SetTitlePayloadToJson(SetTitlePayload instance) {
@@ -746,7 +740,7 @@ Map<String, dynamic> _$SystemDidWakeUpEventToJson(
 TitleParameters _$TitleParametersFromJson(Map<String, dynamic> json) =>
     TitleParameters(
       fontFamily: json['fontFamily'] as String,
-      fontSize: json['fontSize'] as int,
+      fontSize: (json['fontSize'] as num).toInt(),
       fontStyle: json['fontStyle'] as String,
       fontUnderline: json['fontUnderline'] as bool,
       showTitle: json['showTitle'] as bool,
@@ -799,7 +793,7 @@ TitleParametersDidChangePayload _$TitleParametersDidChangePayloadFromJson(
       settings: json['settings'] as Map<String, dynamic>,
       coordinates:
           Coordinates.fromJson(json['coordinates'] as Map<String, dynamic>),
-      state: json['state'] as int?,
+      state: (json['state'] as num?)?.toInt(),
       title: json['title'] as String,
       titleParameters: TitleParameters.fromJson(
           json['titleParameters'] as Map<String, dynamic>),
@@ -848,7 +842,9 @@ TouchTapPayload _$TouchTapPayloadFromJson(Map<String, dynamic> json) =>
       settings: json['settings'] as Map<String, dynamic>,
       coordinates:
           Coordinates.fromJson(json['coordinates'] as Map<String, dynamic>),
-      tapPos: (json['tapPos'] as List<dynamic>).map((e) => e as int).toList(),
+      tapPos: (json['tapPos'] as List<dynamic>)
+          .map((e) => (e as num).toInt())
+          .toList(),
       hold: json['hold'] as bool,
     );
 

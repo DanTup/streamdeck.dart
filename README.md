@@ -24,7 +24,7 @@ Implemented APIs:
 | Receive | systemDidWakeUp | ✅ |
 | Receive | propertyInspectorDidAppear | ✅ |
 | Receive | propertyInspectorDidDisappear | ✅ |
-| Receive | sendToPlugin | |
+| Receive | sendToPlugin | ✅ |
 | Receive | sendToPropertyInspector | |
 | Receive | touchTap (SD+) | ✅ | [indicator] |
 | Receive | dialPress (SD+) | ✅ | [indicator], [image] |
@@ -41,7 +41,7 @@ Implemented APIs:
 | Send | showOk | ✅ | [hold]
 | Send | setState | ✅ |
 | Send | switchToProfile | ✅ |
-| Send | sendToPropertyInspector | |
+| Send | sendToPropertyInspector | ✅ |
 | Send | sendToPlugin | |
 | Send | setFeedback (SD+) | ✅ | [indicator], [image] |
 | Send | setFeedbackLayout (SD+) | ✅ |

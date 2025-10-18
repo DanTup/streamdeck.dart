@@ -608,16 +608,17 @@ class PropertyInspectorDidDisappearEvent extends CommonReceivedEvent {
 
 /// An event sent by the Property Inspector to the plugin.
 @JsonSerializable()
-class SendToPluginEvent extends CommonReceivedEvent {
+class SendToPluginEvent extends Event {
   static const eventId = 'sendToPlugin';
 
+  final String action;
+  final String context;
   final Map<String, Object?> payload;
 
   SendToPluginEvent({
     super.event = SendToPluginEvent.eventId,
-    required super.action,
-    required super.context,
-    required super.device,
+    required this.action,
+    required this.context,
     required this.payload,
   });
 
@@ -630,16 +631,14 @@ class SendToPluginEvent extends CommonReceivedEvent {
 
 /// An event sent by the plugin to the Property Inspector.
 @JsonSerializable()
-class SendToPropertyInspectorEvent extends CommonReceivedEvent {
+class SendToPropertyInspectorEvent extends CommonSentEvent {
   static const eventId = 'sendToPropertyInspector';
 
   final Map<String, Object?> payload;
 
   SendToPropertyInspectorEvent({
     super.event = SendToPropertyInspectorEvent.eventId,
-    required super.action,
     required super.context,
-    required super.device,
     required this.payload,
   });
 
