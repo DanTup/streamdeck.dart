@@ -1,7 +1,9 @@
 ## 0.4.0 _2025-10-24_
 
-- Updated Dart language version `>=3.8.0`.
-- Updated the `example` project build/install script for Windows.
+- Updated Dart language version `>=3.8.0`
+- Updated the `example` project build/install script for Windows
+- `sendToPlugin` support
+- `sendToPropertyInspector` support
 
 ## 0.3.0 _2023-01-31_
 

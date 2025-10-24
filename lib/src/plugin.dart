@@ -149,7 +149,8 @@ abstract class StreamDeckPlugin {
   /// Sends a message to the property inspector.
   void sendToPropertyInspector(String context, Map<String, Object?> payload) {
     _sendEvent(
-        SendToPropertyInspectorEvent(context: context, payload: payload));
+      SendToPropertyInspectorEvent(context: context, payload: payload),
+    );
   }
 
   /// Persists settings data that is available to all actions globally.
