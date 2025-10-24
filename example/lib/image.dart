@@ -30,8 +30,9 @@ class ImageAction extends StreamDeckPluginAction {
 
     setFeedback({
       'title': '',
-      "full-canvas": "data:image/png;base64,"
-          "${base64Encode(img.encodePng(canvas))}"
+      "full-canvas":
+          "data:image/png;base64,"
+          "${base64Encode(img.encodePng(canvas))}",
     });
   }
 

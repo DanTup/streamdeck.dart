@@ -55,9 +55,7 @@ class ApplicationDidTerminateEvent extends Event {
 class ApplicationPayload extends Payload {
   final String application;
 
-  ApplicationPayload({
-    required this.application,
-  });
+  ApplicationPayload({required this.application});
 
   factory ApplicationPayload.fromJson(Map<String, Object?> json) =>
       _$ApplicationPayloadFromJson(json);
@@ -101,10 +99,7 @@ class CommonReceivedPayload extends Payload {
 abstract class CommonSentEvent extends Event {
   final String context;
 
-  CommonSentEvent({
-    required super.event,
-    required this.context,
-  });
+  CommonSentEvent({required super.event, required this.context});
 }
 
 @JsonSerializable()
@@ -131,10 +126,7 @@ class Coordinates {
   final int column;
   final int row;
 
-  Coordinates({
-    required this.column,
-    required this.row,
-  });
+  Coordinates({required this.column, required this.row});
 
   factory Coordinates.fromJson(Map<String, Object?> json) =>
       _$CoordinatesFromJson(json);
@@ -192,11 +184,7 @@ class DeviceInfo {
   final int type;
   final DeviceSize size;
 
-  DeviceInfo({
-    required this.name,
-    required this.type,
-    required this.size,
-  });
+  DeviceInfo({required this.name, required this.type, required this.size});
 
   factory DeviceInfo.fromJson(Map<String, Object?> json) =>
       _$DeviceInfoFromJson(json);
@@ -210,10 +198,7 @@ class DeviceSize {
   final int columns;
   final int rows;
 
-  DeviceSize({
-    required this.columns,
-    required this.rows,
-  });
+  DeviceSize({required this.columns, required this.rows});
 
   factory DeviceSize.fromJson(Map<String, Object?> json) =>
       _$DeviceSizeFromJson(json);
@@ -340,9 +325,7 @@ class DidReceiveGlobalSettingsEvent extends Event {
 class DidReceiveGlobalSettingsPayload extends Payload {
   final Map<String, Object?> settings;
 
-  DidReceiveGlobalSettingsPayload({
-    required this.settings,
-  });
+  DidReceiveGlobalSettingsPayload({required this.settings});
 
   factory DidReceiveGlobalSettingsPayload.fromJson(Map<String, Object?> json) =>
       _$DidReceiveGlobalSettingsPayloadFromJson(json);
@@ -516,9 +499,7 @@ class LogMessageEvent extends CommonSentEvent {
 class LogMessagePayload extends Payload {
   final String message;
 
-  LogMessagePayload({
-    required this.message,
-  });
+  LogMessagePayload({required this.message});
 
   factory LogMessagePayload.fromJson(Map<String, Object?> json) =>
       _$LogMessagePayloadFromJson(json);
@@ -551,9 +532,7 @@ class OpenUrlEvent extends CommonSentEvent {
 class OpenUrlPayload extends Payload {
   final String url;
 
-  OpenUrlPayload({
-    required this.url,
-  });
+  OpenUrlPayload({required this.url});
 
   factory OpenUrlPayload.fromJson(Map<String, Object?> json) =>
       _$OpenUrlPayloadFromJson(json);
@@ -598,8 +577,8 @@ class PropertyInspectorDidDisappearEvent extends CommonReceivedEvent {
   });
 
   factory PropertyInspectorDidDisappearEvent.fromJson(
-          Map<String, Object?> json) =>
-      _$PropertyInspectorDidDisappearEventFromJson(json);
+    Map<String, Object?> json,
+  ) => _$PropertyInspectorDidDisappearEventFromJson(json);
 
   @override
   Map<String, Object?> toJson() =>
@@ -706,9 +685,7 @@ class SetFeedbackLayoutEvent extends CommonSentEvent {
 class SetFeedbackLayoutPayload extends Payload {
   final String layout;
 
-  SetFeedbackLayoutPayload({
-    required this.layout,
-  });
+  SetFeedbackLayoutPayload({required this.layout});
 
   factory SetFeedbackLayoutPayload.fromJson(Map<String, Object?> json) =>
       _$SetFeedbackLayoutPayloadFromJson(json);
@@ -771,11 +748,7 @@ class SetImagePayload extends Payload {
   @JsonKey(includeIfNull: false)
   final int? state;
 
-  SetImagePayload({
-    required this.image,
-    this.target,
-    this.state,
-  });
+  SetImagePayload({required this.image, this.target, this.state});
 
   factory SetImagePayload.fromJson(Map<String, Object?> json) =>
       _$SetImagePayloadFromJson(json);
@@ -830,9 +803,7 @@ class SetStateEvent extends CommonSentEvent {
 class SetStatePayload extends Payload {
   final int state;
 
-  SetStatePayload({
-    required this.state,
-  });
+  SetStatePayload({required this.state});
 
   factory SetStatePayload.fromJson(Map<String, Object?> json) =>
       _$SetStatePayloadFromJson(json);
@@ -871,11 +842,7 @@ class SetTitlePayload extends Payload {
   @JsonKey(includeIfNull: false)
   final int? state;
 
-  SetTitlePayload({
-    required this.title,
-    this.target,
-    this.state,
-  });
+  SetTitlePayload({required this.title, this.target, this.state});
 
   factory SetTitlePayload.fromJson(Map<String, Object?> json) =>
       _$SetTitlePayloadFromJson(json);
@@ -907,10 +874,7 @@ class ShowAlertEvent extends CommonSentEvent {
 class ShowOkEvent extends CommonSentEvent {
   static const eventId = 'showOk';
 
-  ShowOkEvent({
-    super.event = ShowOkEvent.eventId,
-    required super.context,
-  });
+  ShowOkEvent({super.event = ShowOkEvent.eventId, required super.context});
 
   factory ShowOkEvent.fromJson(Map<String, Object?> json) =>
       _$ShowOkEventFromJson(json);
@@ -946,9 +910,7 @@ class SwitchToProfileEvent extends CommonSentEvent {
 class SwitchToProfilePayload extends Payload {
   final String profile;
 
-  SwitchToProfilePayload({
-    required this.profile,
-  });
+  SwitchToProfilePayload({required this.profile});
 
   factory SwitchToProfilePayload.fromJson(Map<String, Object?> json) =>
       _$SwitchToProfilePayloadFromJson(json);
@@ -961,9 +923,7 @@ class SwitchToProfilePayload extends Payload {
 class SystemDidWakeUpEvent extends Event {
   static const eventId = 'systemDidWakeUp';
 
-  SystemDidWakeUpEvent({
-    super.event = SystemDidWakeUpEvent.eventId,
-  });
+  SystemDidWakeUpEvent({super.event = SystemDidWakeUpEvent.eventId});
 
   factory SystemDidWakeUpEvent.fromJson(Map<String, Object?> json) =>
       _$SystemDidWakeUpEventFromJson(json);
@@ -989,11 +949,7 @@ enum Target {
 }
 
 /// Alignment for a title.
-enum TitleAlignment {
-  top,
-  bottom,
-  middle,
-}
+enum TitleAlignment { top, bottom, middle }
 
 /// Parameters that control how a title is displayed.
 @JsonSerializable()

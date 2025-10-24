@@ -22,6 +22,9 @@
 			"label": "Build and Install",
 			"type": "shell",
 			"command": "tool/macos_build_and_install.sh",
+			"windows": {
+				"command": "tool/windows_build_and_install.ps1",
+			},
 			"options": {
 				"cwd": "example"
 			},

@@ -10,10 +10,8 @@ class IndicatorAction extends StreamDeckPluginAction {
 
   int _value = 42;
 
-  void sendValue() => setFeedback({
-    'value': _value.toString(),
-    'indicator': _value.toString(),
-  });
+  void sendValue() =>
+      setFeedback({'value': _value.toString(), 'indicator': _value.toString()});
 
   @override
   void willAppear(WillAppearEvent event) {

@@ -5,7 +5,7 @@ version: 0.1.0
 repository: https://github.com/DanTup/streamdeck.dart
 
 environment:
-  sdk: '>=2.18.0 <3.0.0'
+  sdk: '>=3.8.0 <4.0.0'
 
 dependencies:
   image: ^4.0.4
@@ -15,4 +15,4 @@ dependencies:
   json_annotation: ^4.7.0
 
 dev_dependencies:
-  lints: ^2.0.1
+  lints: ^6.0.0

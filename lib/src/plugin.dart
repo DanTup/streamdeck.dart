@@ -1,23 +1,20 @@
-library plugin;
-
 import 'dart:convert';
 import 'dart:io';
 
 import 'package:path/path.dart' as path;
 import 'package:streamdeck/src/protocol.dart';
 
-typedef ActionConstructor = StreamDeckPluginAction Function(
-  StreamDeckPlugin plugin,
-  String context,
-);
+typedef ActionConstructor =
+    StreamDeckPluginAction Function(StreamDeckPlugin plugin, String context);
 
-typedef PluginConstructor<T extends StreamDeckPlugin> = T Function({
-  required WebSocket socket,
-  required String pluginUuid,
-  required String registerEvent,
-  required ServiceInfo info,
-  IOSink? logSink,
-});
+typedef PluginConstructor<T extends StreamDeckPlugin> =
+    T Function({
+      required WebSocket socket,
+      required String pluginUuid,
+      required String registerEvent,
+      required ServiceInfo info,
+      IOSink? logSink,
+    });
 
 /// The base class for a Stream Deck plugin that connects to the Stream Deck.
 ///
@@ -40,10 +37,10 @@ abstract class StreamDeckPlugin {
     required String registerEvent,
     required ServiceInfo info,
     IOSink? logSink,
-  })  : _socket = socket,
-        _registerEvent = registerEvent,
-        _info = info,
-        _logSink = logSink {
+  }) : _socket = socket,
+       _registerEvent = registerEvent,
+       _info = info,
+       _logSink = logSink {
     _socket.listen((data) => _handleSocketEvent(data));
     _send({"event": _registerEvent, "uuid": pluginUuid});
   }
@@ -162,8 +159,13 @@ abstract class StreamDeckPlugin {
 
   /// Switches Stream Deck to a read-only profile preconfigured by the plugin.
   void switchToProfile(String device, SwitchToProfilePayload payload) {
-    _sendEvent(SwitchToProfileEvent(
-        device: device, context: pluginUuid, payload: payload));
+    _sendEvent(
+      SwitchToProfileEvent(
+        device: device,
+        context: pluginUuid,
+        payload: payload,
+      ),
+    );
   }
 
   /// Persists settings data that is available to a single action.
@@ -279,11 +281,15 @@ abstract class StreamDeckPlugin {
         case DidReceiveSettingsEvent.eventId:
           return didReceiveSettings(DidReceiveSettingsEvent.fromJson(data));
         case DidReceiveGlobalSettingsEvent.eventId:
-          return didReceiveGlobalSettings(DidReceiveGlobalSettingsEvent.fromJson(data));
+          return didReceiveGlobalSettings(
+            DidReceiveGlobalSettingsEvent.fromJson(data),
+          );
         case ApplicationDidLaunchEvent.eventId:
           return applicationDidLaunch(ApplicationDidLaunchEvent.fromJson(data));
         case ApplicationDidTerminateEvent.eventId:
-          return applicationDidTerminate(ApplicationDidTerminateEvent.fromJson(data));
+          return applicationDidTerminate(
+            ApplicationDidTerminateEvent.fromJson(data),
+          );
         case KeyDownEvent.eventId:
           return keyDown(KeyDownEvent.fromJson(data));
         case KeyUpEvent.eventId:
@@ -402,7 +408,8 @@ abstract class StreamDeckPluginAction<T extends StreamDeckPlugin> {
   /// Called when the Property Inspector is removed from the Stream Deck
   /// user interface, for example when selecting a different instance.
   void propertyInspectorDidDisappear(
-      PropertyInspectorDidDisappearEvent event) {}
+    PropertyInspectorDidDisappearEvent event,
+  ) {}
 
   /// Persists settings data that is available to an action.
   void setSettings(Map<String, Object?> payload) {

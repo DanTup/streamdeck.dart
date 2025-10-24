@@ -17,8 +17,9 @@ class CounterAction extends StreamDeckPluginAction {
     sendCount();
 
     if (_count % 10 == 0) {
-      logMessage(LogMessagePayload(
-          message: 'Counter for $context has reached $_count'));
+      logMessage(
+        LogMessagePayload(message: 'Counter for $context has reached $_count'),
+      );
     }
 
     // TODO: Persist with settings

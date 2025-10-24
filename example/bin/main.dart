@@ -17,16 +17,13 @@ Future<void> main(List<String> arguments) async {
   log.writeln('Starting plugin: $arguments');
 
   late final Plugin plugin;
-  await runZonedGuarded(
-    () async {
-      plugin = await StreamDeckPlugin.connect(
-        Plugin.new,
-        arguments,
-        logSink: log,
-      );
-    },
-    (error, stack) => log.writeln('ERROR: $error $stack'),
-  );
+  await runZonedGuarded(() async {
+    plugin = await StreamDeckPlugin.connect(
+      Plugin.new,
+      arguments,
+      logSink: log,
+    );
+  }, (error, stack) => log.writeln('ERROR: $error $stack'));
 
   await plugin.done;
   log.writeln('Done!');

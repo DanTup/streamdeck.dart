@@ -1,10 +1,10 @@
 name: streamdeck
 description: A Dart package for building plugins for the Elgato Stream Deck in Dart.
-version: 0.3.0
+version: 0.4.0
 repository: https://github.com/DanTup/streamdeck.dart
 
 environment:
-  sdk: '>=2.18.0 <3.0.0'
+  sdk: '>=3.8.0 <4.0.0'
 
 dependencies:
   json_annotation: ^4.7.0
@@ -13,6 +13,6 @@ dependencies:
   path: ^1.8.2
 
 dev_dependencies:
-  lints: ^2.0.1
+  lints: ^6.0.0
   build_runner: ^2.3.2
 
